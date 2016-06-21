@@ -8,7 +8,9 @@
 
 #import "FirePhotoCVC.h"
 
-@interface FirePhotoCVC ()
+@interface FirePhotoCVC () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property(strong, nonatomic) UIImagePickerController *imagePicker;
 
 @end
 
@@ -18,9 +20,6 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
@@ -63,6 +62,20 @@ static NSString * const reuseIdentifier = @"Cell";
     
     return cell;
 }
+
+-(void)presentCamera {
+    _imagePicker = [[UIImagePickerController alloc] init];
+    [_imagePicker setDelegate:self];
+    [_imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:_imagePicker animated:true completion:nil];
+}
+
+- (IBAction)cameraButtonPressed:(id)sender {
+    [self presentCamera];
+    
+    
+}
+
 
 #pragma mark <UICollectionViewDelegate>
 

@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5476DFE4FF8770A10663B797D318F5A26ED66B47",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5476DFE4FF8770A10663B797D318F5A26ED66B47" : 0,
+    "D9D0CCF4566E82CC7C13C89E9BA659C99FE126D2" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4F9E31DE-E015-4F50-9E65-86B0D5CECFE6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5476DFE4FF8770A10663B797D318F5A26ED66B47" : "FirePhotos\/",
+    "D9D0CCF4566E82CC7C13C89E9BA659C99FE126D2" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FirePhotos",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FirePhotos.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dcotter1208\/FirePhotos.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5476DFE4FF8770A10663B797D318F5A26ED66B47"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:dcotter1208\/LightningRealm.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D9D0CCF4566E82CC7C13C89E9BA659C99FE126D2"
+    }
+  ]
+}
