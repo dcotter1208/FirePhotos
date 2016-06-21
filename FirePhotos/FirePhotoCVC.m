@@ -7,12 +7,14 @@
 //
 
 #import "FirePhotoCVC.h"
+#import "Photo.h"
 @import Firebase;
 @import FirebaseStorage;
 @import FirebaseDatabase;
 
 @interface FirePhotoCVC () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
+@property (strong, nonatomic) Photo *photo;
 @property (strong, nonatomic) UIImagePickerController *imagePicker;
 //FIRStorageReference represents a reference to a Google Cloud Storage object.
 @property (strong, nonatomic) FIRStorageReference *firebaseStorageRef;
@@ -105,17 +107,38 @@ static NSString * const reuseIdentifier = @"Cell";
         if (error) {
             NSLog(@"ERROR: %@", error.description);
         } else {
-            //Prints the metaData's download URL. this will be stored in a property of a Photo Object and then later used to
-            NSLog(@"MetaDataURL: %@", metadata.downloadURL);
+            Photo *photo = [[Photo alloc]initPhotoWithDownloadURL:[NSString stringWithFormat:@"%@", metadata.downloadURL] andTimestamp:[self createFormattedTimeStamp]];
+            NSLog(@"photoURL: %@", metadata.downloadURL);
+            [self savePhotoObjectToFirebaseDatabase:photo];
+            NSLog(@"Hello!");
         }
     }];
     [uploadTask resume];
 }
 
--(void)savePhotoObjectToFirebaseDatabase {
+-(void)savePhotoObjectToFirebaseDatabase:(Photo *)photo {
+    FIRDatabaseReference *firebaseRef = [[FIRDatabase database] reference];
+    FIRDatabaseReference *photosRef = [firebaseRef child:@"photos"].childByAutoId;
+    NSLog(@"Photos Ref: %@", photosRef);
+    NSDictionary *photoDict = @{@"downloadURL": photo.downloadURL, @"timestamp": photo.timestamp};
     
+    [photosRef setValue:photoDict];
 }
 
+#pragma mark Timestamp and Date Formatter Methods
+-(NSString *)createFormattedTimeStamp {
+    NSDate *timestamp = [NSDate date];
+    NSString *stringTimestamp = [self formatDate:timestamp];
+    return stringTimestamp;
+}
+
+
+-(NSString *)formatDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MM/dd/YYYY HH:mm:ss a"];
+    NSString *formattedDate = [dateFormatter stringFromDate:date];
+    return formattedDate;
+}
 
 #pragma mark <UICollectionViewDelegate>
 
