@@ -108,9 +108,7 @@ static NSString * const reuseIdentifier = @"Cell";
             NSLog(@"ERROR: %@", error.description);
         } else {
             Photo *photo = [[Photo alloc]initPhotoWithDownloadURL:[NSString stringWithFormat:@"%@", metadata.downloadURL] andTimestamp:[self createFormattedTimeStamp]];
-            NSLog(@"photoURL: %@", metadata.downloadURL);
             [self savePhotoObjectToFirebaseDatabase:photo];
-            NSLog(@"Hello!");
         }
     }];
     [uploadTask resume];
