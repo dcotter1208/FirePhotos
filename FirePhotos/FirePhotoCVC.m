@@ -7,8 +7,19 @@
 //
 
 #import "FirePhotoCVC.h"
+#import "Photo.h"
+@import Firebase;
+@import FirebaseStorage;
+@import FirebaseDatabase;
 
-@interface FirePhotoCVC ()
+@interface FirePhotoCVC () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) Photo *photo;
+@property (strong, nonatomic) UIImagePickerController *imagePicker;
+//FIRStorageReference represents a reference to a Google Cloud Storage object.
+@property (strong, nonatomic) FIRStorageReference *firebaseStorageRef;
+//An instance of FIRStorage will initialize with the default FIRApp
+@property (strong, nonatomic) FIRStorage *firebaseStorage;
 
 @end
 
@@ -17,15 +28,12 @@
 static NSString * const reuseIdentifier = @"Cell";
 
 - (void)viewDidLoad {
+    [self firebaseSetUp];
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,13 +54,11 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-#warning Incomplete implementation, return the number of sections
     return 0;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of items
     return 0;
 }
 
@@ -62,6 +68,76 @@ static NSString * const reuseIdentifier = @"Cell";
     // Configure the cell
     
     return cell;
+}
+
+#pragma mark Camera Methods
+
+-(void)presentCamera {
+    _imagePicker = [[UIImagePickerController alloc] init];
+    [_imagePicker setDelegate:self];
+    [_imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+    [self presentViewController:_imagePicker animated:true completion:nil];
+}
+
+- (IBAction)cameraButtonPressed:(id)sender {
+    [self presentCamera];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    NSData *imageData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1);
+    [self uploadPhotoToFirebase:imageData];
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
+#pragma mark Firebase Methods
+
+-(void)firebaseSetUp {
+    _firebaseStorage = [FIRStorage storage];
+    _firebaseStorageRef = [_firebaseStorage referenceForURL:@"gs://firephotos-40912.appspot.com"];
+}
+
+-(void)uploadPhotoToFirebase:(NSData *)imageData {
+    //Create a uniqueID for the image and add it to the end of the images reference.
+    NSString *uniqueID = [[NSUUID UUID]UUIDString];
+    NSString *newImageReference = [NSString stringWithFormat:@"images/%@.jpg", uniqueID];
+    //imagesRef creates a reference for the images folder and then adds a child to that folder, which will be every time a photo is taken.
+    FIRStorageReference *imagesRef = [_firebaseStorageRef child:newImageReference];
+    //This uploads the photo's NSData onto Firebase Storage.
+    FIRStorageUploadTask *uploadTask = [imagesRef putData:imageData metadata:nil completion:^(FIRStorageMetadata *metadata, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR: %@", error.description);
+        } else {
+            Photo *photo = [[Photo alloc]initPhotoWithDownloadURL:[NSString stringWithFormat:@"%@", metadata.downloadURL] andTimestamp:[self createFormattedTimeStamp]];
+            NSLog(@"photoURL: %@", metadata.downloadURL);
+            [self savePhotoObjectToFirebaseDatabase:photo];
+            NSLog(@"Hello!");
+        }
+    }];
+    [uploadTask resume];
+}
+
+-(void)savePhotoObjectToFirebaseDatabase:(Photo *)photo {
+    FIRDatabaseReference *firebaseRef = [[FIRDatabase database] reference];
+    FIRDatabaseReference *photosRef = [firebaseRef child:@"photos"].childByAutoId;
+    NSLog(@"Photos Ref: %@", photosRef);
+    NSDictionary *photoDict = @{@"downloadURL": photo.downloadURL, @"timestamp": photo.timestamp};
+    
+    [photosRef setValue:photoDict];
+}
+
+#pragma mark Timestamp and Date Formatter Methods
+-(NSString *)createFormattedTimeStamp {
+    NSDate *timestamp = [NSDate date];
+    NSString *stringTimestamp = [self formatDate:timestamp];
+    return stringTimestamp;
+}
+
+
+-(NSString *)formatDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MM/dd/YYYY HH:mm:ss a"];
+    NSString *formattedDate = [dateFormatter stringFromDate:date];
+    return formattedDate;
 }
 
 #pragma mark <UICollectionViewDelegate>
