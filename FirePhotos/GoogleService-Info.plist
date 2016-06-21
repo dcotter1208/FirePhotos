@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>273843930546-ui5r2n1g8c038ss7rfro9m0d460id7c7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.273843930546-ui5r2n1g8c038ss7rfro9m0d460id7c7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDjrzC09CV6y65Vid_cvXn1GLYz2OtfQ6Y</string>
+	<key>GCM_SENDER_ID</key>
+	<string>273843930546</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>detroitlabs.FirePhotos</string>
+	<key>PROJECT_ID</key>
+	<string>firephotos-40912</string>
+	<key>STORAGE_BUCKET</key>
+	<string>firephotos-40912.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:273843930546:ios:d4862fb5a4e6e7c0</string>
+	<key>DATABASE_URL</key>
+	<string>https://firephotos-40912.firebaseio.com</string>
+</dict>
+</plist>

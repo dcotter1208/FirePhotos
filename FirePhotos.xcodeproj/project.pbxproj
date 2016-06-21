@@ -14,6 +14,9 @@
 		432610F71D1971FE008A8E2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432610F51D1971FE008A8E2F /* LaunchScreen.storyboard */; };
 		432610FF1D197225008A8E2F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 432610FE1D197225008A8E2F /* .gitignore */; };
 		432611021D1972CA008A8E2F /* FirePhotoCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 432611011D1972CA008A8E2F /* FirePhotoCVC.m */; };
+		432611041D19751A008A8E2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 432611031D19751A008A8E2F /* GoogleService-Info.plist */; };
+		432611071D198653008A8E2F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 432611061D198653008A8E2F /* Photo.m */; };
+		916A3229ABFD6F6A2E4BC27A /* libPods-FirePhotos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BE451EBB6D6931775B7780 /* libPods-FirePhotos.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,12 @@
 		432610FE1D197225008A8E2F /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		432611001D1972CA008A8E2F /* FirePhotoCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirePhotoCVC.h; sourceTree = "<group>"; };
 		432611011D1972CA008A8E2F /* FirePhotoCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirePhotoCVC.m; sourceTree = "<group>"; };
+		432611031D19751A008A8E2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		432611051D198653008A8E2F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		432611061D198653008A8E2F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		69E945A7A6F94F33447F3464 /* Pods-FirePhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirePhotos/Pods-FirePhotos.debug.xcconfig"; sourceTree = "<group>"; };
+		8C8263529311D64DC9D14910 /* Pods-FirePhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirePhotos/Pods-FirePhotos.release.xcconfig"; sourceTree = "<group>"; };
+		97BE451EBB6D6931775B7780 /* libPods-FirePhotos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirePhotos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +44,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916A3229ABFD6F6A2E4BC27A /* libPods-FirePhotos.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12164FCFBA36FCE52DB9F90E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69E945A7A6F94F33447F3464 /* Pods-FirePhotos.debug.xcconfig */,
+				8C8263529311D64DC9D14910 /* Pods-FirePhotos.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		432610DB1D1971FD008A8E2F = {
 			isa = PBXGroup;
 			children = (
 				432610E61D1971FE008A8E2F /* FirePhotos */,
 				432610E51D1971FD008A8E2F /* Products */,
+				12164FCFBA36FCE52DB9F90E /* Pods */,
+				9C4C9A5CEC559A50E85E8602 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,11 +83,12 @@
 			children = (
 				432610EA1D1971FE008A8E2F /* AppDelegate.h */,
 				432610EB1D1971FE008A8E2F /* AppDelegate.m */,
-				432611001D1972CA008A8E2F /* FirePhotoCVC.h */,
-				432611011D1972CA008A8E2F /* FirePhotoCVC.m */,
+				432611091D198662008A8E2F /* Controller */,
+				432611081D19865C008A8E2F /* Model */,
 				432610F01D1971FE008A8E2F /* Main.storyboard */,
 				432610F31D1971FE008A8E2F /* Assets.xcassets */,
 				432610F51D1971FE008A8E2F /* LaunchScreen.storyboard */,
+				432611031D19751A008A8E2F /* GoogleService-Info.plist */,
 				432610FE1D197225008A8E2F /* .gitignore */,
 				432610F81D1971FE008A8E2F /* Info.plist */,
 				432610E71D1971FE008A8E2F /* Supporting Files */,
@@ -82,6 +104,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		432611081D19865C008A8E2F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				432611051D198653008A8E2F /* Photo.h */,
+				432611061D198653008A8E2F /* Photo.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		432611091D198662008A8E2F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				432611001D1972CA008A8E2F /* FirePhotoCVC.h */,
+				432611011D1972CA008A8E2F /* FirePhotoCVC.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9C4C9A5CEC559A50E85E8602 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97BE451EBB6D6931775B7780 /* libPods-FirePhotos.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +137,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 432610FB1D1971FE008A8E2F /* Build configuration list for PBXNativeTarget "FirePhotos" */;
 			buildPhases = (
+				8B94BE43034DC649D464E3AD /* 📦 Check Pods Manifest.lock */,
 				432610E01D1971FD008A8E2F /* Sources */,
 				432610E11D1971FD008A8E2F /* Frameworks */,
 				432610E21D1971FD008A8E2F /* Resources */,
+				E5501A0C932C64EBB73D145B /* 📦 Embed Pods Frameworks */,
+				F0E03C02F88EF5D584900029 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -141,6 +192,7 @@
 			files = (
 				432610FF1D197225008A8E2F /* .gitignore in Resources */,
 				432610F71D1971FE008A8E2F /* LaunchScreen.storyboard in Resources */,
+				432611041D19751A008A8E2F /* GoogleService-Info.plist in Resources */,
 				432610F41D1971FE008A8E2F /* Assets.xcassets in Resources */,
 				432610F21D1971FE008A8E2F /* Main.storyboard in Resources */,
 			);
@@ -148,11 +200,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B94BE43034DC649D464E3AD /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E5501A0C932C64EBB73D145B /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirePhotos/Pods-FirePhotos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0E03C02F88EF5D584900029 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirePhotos/Pods-FirePhotos-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		432610E01D1971FD008A8E2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432611071D198653008A8E2F /* Photo.m in Sources */,
 				432611021D1972CA008A8E2F /* FirePhotoCVC.m in Sources */,
 				432610EC1D1971FE008A8E2F /* AppDelegate.m in Sources */,
 				432610E91D1971FE008A8E2F /* main.m in Sources */,
@@ -265,6 +366,7 @@
 		};
 		432610FC1D1971FE008A8E2F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69E945A7A6F94F33447F3464 /* Pods-FirePhotos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FirePhotos/Info.plist;
@@ -276,6 +378,7 @@
 		};
 		432610FD1D1971FE008A8E2F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C8263529311D64DC9D14910 /* Pods-FirePhotos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = FirePhotos/Info.plist;
@@ -304,6 +407,7 @@
 				432610FD1D1971FE008A8E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
