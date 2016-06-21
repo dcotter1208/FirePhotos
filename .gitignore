@@ -21,6 +21,10 @@ xcuserdata/
 *.DS_Store
 */.DS_Store
 xcshareddata
+UserInterfaceState.xcuserstate
+UserInterface.xcuserstate
+xcuserdata
+
 
 ## Other
 *.moved-aside
