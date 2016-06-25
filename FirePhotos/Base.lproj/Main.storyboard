@@ -45,18 +45,35 @@
         <scene sceneID="uBb-lT-JXI">
             <objects>
                 <tableViewController id="O0Z-hL-vaz" customClass="PhotosTVC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8sl-Ku-hhy">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="259" sectionHeaderHeight="28" sectionFooterHeight="28" id="8sl-Ku-hhy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="34P-F9-w2X">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="259" id="34P-F9-w2X" customClass="PhotoTableViewCell">
+                                <rect key="frame" x="0.0" y="92" width="600" height="259"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="34P-F9-w2X" id="ga7-7z-xi7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="259"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zp4-sV-8OB" customClass="Pho">
+                                            <rect key="frame" x="189" y="18" width="223" height="223"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="223" id="ESr-q1-kYr"/>
+                                                <constraint firstAttribute="width" constant="223" id="ikR-Lp-aIR"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zp4-sV-8OB" firstAttribute="centerY" secondItem="ga7-7z-xi7" secondAttribute="centerY" id="8No-c1-Xpp"/>
+                                        <constraint firstItem="zp4-sV-8OB" firstAttribute="centerX" secondItem="ga7-7z-xi7" secondAttribute="centerX" id="SVz-Sh-hl2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="cellImageView" destination="zp4-sV-8OB" id="4UX-HQ-B6a"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

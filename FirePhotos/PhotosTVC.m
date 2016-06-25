@@ -8,6 +8,8 @@
 
 #import "PhotosTVC.h"
 #import "Photo.h"
+#import "PhotoTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface PhotosTVC ()
 
@@ -35,12 +37,14 @@
     return [_photoArray count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+- (PhotoTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     Photo *photo = [_photoArray objectAtIndex:indexPath.row];
     
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.downloadURL]]];
+    [cell.cellImageView setImageWithURL:[NSURL URLWithString:photo.downloadURL] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    
+//    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.downloadURL]]];
     
     return cell;
 }
