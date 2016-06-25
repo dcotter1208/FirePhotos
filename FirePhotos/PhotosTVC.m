@@ -22,6 +22,9 @@
 - (void)viewDidLoad {
     Photo *testPhoto = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C85382F-63D8-4A31-911F-061443EDC8EE.jpg?alt=media&token=c317532c-51e7-45d6-9482-f0604d00b124" andTimestamp:@"06/23/16"];
     Photo *testPhoto2 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C9E2E72-31DC-4516-A033-93D5320F7024.jpg?alt=media&token=3843ac0f-e416-4c49-846d-8969c0fff9c7" andTimestamp:@"06/23/16"];
+        Photo *testPhoto3 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C9E2E72-31DC-4516-A033-93D5320F7024.jpg?alt=media&token=3843ac0f-e416-4c49-846d-8969c0fff9c7" andTimestamp:@"06/23/16"];
+        Photo *testPhoto4 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C9E2E72-31DC-4516-A033-93D5320F7024.jpg?alt=media&token=3843ac0f-e416-4c49-846d-8969c0fff9c7" andTimestamp:@"06/23/16"];
+        Photo *testPhoto5 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C9E2E72-31DC-4516-A033-93D5320F7024.jpg?alt=media&token=3843ac0f-e416-4c49-846d-8969c0fff9c7" andTimestamp:@"06/23/16"];
     _photoArray = [[NSMutableArray alloc]initWithObjects:testPhoto, testPhoto2, nil];
     [super viewDidLoad];
     

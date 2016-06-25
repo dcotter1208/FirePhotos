@@ -14,6 +14,8 @@
     [super awakeFromNib];
     _cellImageView.layer.borderWidth = 4.0;
     _cellImageView.layer.borderColor = [[UIColor whiteColor] CGColor];
+    _cellImageView.layer.cornerRadius = 111.50;
+    _cellImageView.layer.masksToBounds = TRUE;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

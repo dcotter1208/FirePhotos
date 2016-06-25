@@ -57,7 +57,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="259"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zp4-sV-8OB" customClass="Pho">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zp4-sV-8OB" customClass="Pho">
                                             <rect key="frame" x="189" y="18" width="223" height="223"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="223" id="ESr-q1-kYr"/>
