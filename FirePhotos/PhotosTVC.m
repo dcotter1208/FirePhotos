@@ -10,28 +10,40 @@
 #import "Photo.h"
 #import "PhotoTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+@import FirebaseDatabase;
 
 @interface PhotosTVC ()
 
 @property(nonatomic, strong) NSMutableArray *photoArray;
-
+@property(nonatomic, strong) Photo *photo;
 @end
 
 @implementation PhotosTVC
 
 - (void)viewDidLoad {
-    Photo *testPhoto = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C85382F-63D8-4A31-911F-061443EDC8EE.jpg?alt=media&token=c317532c-51e7-45d6-9482-f0604d00b124" andTimestamp:@"06/23/16"];
-    Photo *testPhoto2 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F7C9E2E72-31DC-4516-A033-93D5320F7024.jpg?alt=media&token=3843ac0f-e416-4c49-846d-8969c0fff9c7" andTimestamp:@"06/23/16"];
-        Photo *testPhoto3 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F1867F449-8176-4704-A39B-31627DB4C4FE.jpg?alt=media&token=9198a4a3-58e3-4acc-bd91-c857cc544f1e" andTimestamp:@"06/23/16"];
-        Photo *testPhoto4 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2F3C4FC4D5-6502-4DE4-AB42-D41711BCD9F0.jpg?alt=media&token=061d2c08-63de-4a66-858e-19912da8dc4d" andTimestamp:@"06/23/16"];
-        Photo *testPhoto5 = [[Photo alloc]initPhotoWithDownloadURL:@"https://firebasestorage.googleapis.com/v0/b/firephotos-40912.appspot.com/o/images%2FBFDF256F-41F6-4346-B50F-8F6F7D411927.jpg?alt=media&token=310de5c6-2270-40a2-8961-04c6897105e1" andTimestamp:@"06/23/16"];
-    _photoArray = [[NSMutableArray alloc]initWithObjects:testPhoto, testPhoto2, testPhoto3, testPhoto4, testPhoto5, nil];
+    [self queryPhotosFromFirebase];
     [super viewDidLoad];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)queryPhotosFromFirebase {
+    _photoArray = [[NSMutableArray alloc]init];
+
+    FIRDatabaseReference *firebaseDatabaseRef = [[FIRDatabase database] reference];
+    FIRDatabaseReference *photosRef = [firebaseDatabaseRef.ref child:@"photos"];
+
+    [photosRef observeEventType: FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot *snapshot) {
+
+        _photo = [[Photo alloc]initPhotoWithDownloadURL:snapshot.value[@"downloadURL"] andTimestamp:snapshot.value[@"timestamp"]];
+
+        [_photoArray addObject:_photo];
+        [self.tableView reloadData];
+
+    }];
 }
 
 #pragma mark - Table view data source
