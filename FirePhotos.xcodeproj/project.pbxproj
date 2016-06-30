@@ -19,6 +19,7 @@
 		434D70581D1DB30E002DEA46 /* PhotosTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 434D70571D1DB30E002DEA46 /* PhotosTVC.m */; };
 		434D705B1D1DB33B002DEA46 /* EntryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 434D705A1D1DB33B002DEA46 /* EntryVC.m */; };
 		434D705E1D1E3689002DEA46 /* PhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 434D705D1D1E3689002DEA46 /* PhotoTableViewCell.m */; };
+		43E756121D21EFDE000C19C4 /* SelectedImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E756111D21EFDE000C19C4 /* SelectedImageViewController.m */; };
 		916A3229ABFD6F6A2E4BC27A /* libPods-FirePhotos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BE451EBB6D6931775B7780 /* libPods-FirePhotos.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,8 @@
 		434D705A1D1DB33B002DEA46 /* EntryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryVC.m; sourceTree = "<group>"; };
 		434D705C1D1E3689002DEA46 /* PhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoTableViewCell.h; sourceTree = "<group>"; };
 		434D705D1D1E3689002DEA46 /* PhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoTableViewCell.m; sourceTree = "<group>"; };
+		43E756101D21EFDE000C19C4 /* SelectedImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedImageViewController.h; sourceTree = "<group>"; };
+		43E756111D21EFDE000C19C4 /* SelectedImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedImageViewController.m; sourceTree = "<group>"; };
 		69E945A7A6F94F33447F3464 /* Pods-FirePhotos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePhotos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirePhotos/Pods-FirePhotos.debug.xcconfig"; sourceTree = "<group>"; };
 		8C8263529311D64DC9D14910 /* Pods-FirePhotos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirePhotos.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirePhotos/Pods-FirePhotos.release.xcconfig"; sourceTree = "<group>"; };
 		97BE451EBB6D6931775B7780 /* libPods-FirePhotos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirePhotos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +136,8 @@
 				432611011D1972CA008A8E2F /* FirePhotoCVC.m */,
 				434D70561D1DB30E002DEA46 /* PhotosTVC.h */,
 				434D70571D1DB30E002DEA46 /* PhotosTVC.m */,
+				43E756101D21EFDE000C19C4 /* SelectedImageViewController.h */,
+				43E756111D21EFDE000C19C4 /* SelectedImageViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -271,6 +276,7 @@
 				432611071D198653008A8E2F /* Photo.m in Sources */,
 				432611021D1972CA008A8E2F /* FirePhotoCVC.m in Sources */,
 				434D70581D1DB30E002DEA46 /* PhotosTVC.m in Sources */,
+				43E756121D21EFDE000C19C4 /* SelectedImageViewController.m in Sources */,
 				434D705E1D1E3689002DEA46 /* PhotoTableViewCell.m in Sources */,
 				434D705B1D1DB33B002DEA46 /* EntryVC.m in Sources */,
 				432610EC1D1971FE008A8E2F /* AppDelegate.m in Sources */,

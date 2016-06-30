@@ -8,6 +8,7 @@
 
 #import "EntryVC.h"
 #import "Photo.h"
+@import MobileCoreServices;
 
 @import Firebase;
 @import FirebaseStorage;
@@ -40,6 +41,8 @@
     _imagePicker = [[UIImagePickerController alloc] init];
     [_imagePicker setDelegate:self];
     [_imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+//    NSArray *mediaTypes = [[NSArray alloc]initWithObjects:(NSString *)kUTTypeMovie, nil];
+//    _imagePicker.mediaTypes = mediaTypes;
     [self presentViewController:_imagePicker animated:true completion:nil];
 }
 
@@ -49,8 +52,20 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     NSData *imageData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1);
-    [self uploadPhotoToFirebase:imageData];
+    UIImage *image = [UIImage imageWithData:imageData];
+    NSData *resizedImgData =  UIImageJPEGRepresentation([self reduceImageSize:image], .50);
+    [self uploadPhotoToFirebase:resizedImgData];
     [self dismissViewControllerAnimated:true completion:nil];
+}
+
+-(UIImage *)reduceImageSize:(UIImage *)image {
+//    NSLog(@"ORIGINAL IMAGE: width-%f, height-%f", image.size.width, image.size.height);
+    CGSize newSize = CGSizeMake(image.size.width/6, image.size.height/6);
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+//    NSLog(@"SMALL IMAGE: width-%f, height-%f", smallImage.size.width, smallImage.size.height);
+    return smallImage;
 }
 
 #pragma mark Firebase Methods
@@ -61,6 +76,7 @@
 }
 
 -(void)uploadPhotoToFirebase:(NSData *)imageData {
+    
     //Create a uniqueID for the image and add it to the end of the images reference.
     NSString *uniqueID = [[NSUUID UUID]UUIDString];
     NSString *newImageReference = [NSString stringWithFormat:@"images/%@.jpg", uniqueID];
